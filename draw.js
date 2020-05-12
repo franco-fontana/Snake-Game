@@ -4,6 +4,7 @@ const scale = 20;
 const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 var snake;
+const border = true;
 
 (function setup() {
   snake = new Snake();

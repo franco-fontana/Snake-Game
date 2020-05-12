@@ -1,7 +1,7 @@
 function Snake() {
   this.x = 0;
   this.y = 0;
-  this.xSpeed = scale * 2;
+  this.xSpeed = scale * 1;
   this.ySpeed = 0;
   this.total = 0;
   this.tail = [];
@@ -27,13 +27,23 @@ function Snake() {
     this.x += this.xSpeed;
     this.y += this.ySpeed;
 
-    if (this.x >= canvas.width) {
-      this.x = 0;
-    }
+    if (!border) {
+			if (this.x >= canvas.width) {
+				this.x = 0;
+			}
+		} else if (this.x >= canvas.width) {
+      document.querySelector('.score')
+      .innerText = "Game Over!";
+      throw new Error("Game Over!");
+		}
 
-    if (this.y >= canvas.height) {
+    if (this.y >= canvas.height && !border) {
       this.y = 0;
-    }
+    } else if (this.y >= canvas.height) {
+      document.querySelector('.score')
+      .innerText = "Game Over!";
+      throw new Error("Game Over!");
+		}
 
     if (this.x < 0) {
       this.x = canvas.width;
